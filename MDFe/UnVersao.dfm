@@ -1,0 +1,123 @@
+object FrmVersao: TFrmVersao
+  Left = 0
+  Top = 0
+  BorderIcons = []
+  ClientHeight = 220
+  ClientWidth = 475
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Panel1: TPanel
+    Left = 0
+    Top = 0
+    Width = 473
+    Height = 217
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clMaroon
+    Font.Height = -12
+    Font.Name = 'Tahoma'
+    Font.Style = [fsBold]
+    ParentFont = False
+    TabOrder = 0
+    object Label1: TLabel
+      Left = 104
+      Top = 168
+      Width = 101
+      Height = 14
+      Caption = 'Piracanjuba - GO'
+    end
+    object Label2: TLabel
+      Left = 32
+      Top = 48
+      Width = 322
+      Height = 13
+      Caption = 'Atualiza'#231#227'o dos movimentos de MDF no sistem RMNucles'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clMaroon
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object Label3: TLabel
+      Left = 32
+      Top = 68
+      Width = 430
+      Height = 13
+      Caption = 
+        'Gerenciamento das Bonifica'#231#245'es dos vendedores (Retaquarda e RMNu' +
+        'cleus)'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clMaroon
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object Label4: TLabel
+      Left = 32
+      Top = 112
+      Width = 100
+      Height = 14
+      Caption = 'Vers'#227'o Anterior:'
+    end
+    object Label5: TLabel
+      Left = 207
+      Top = 112
+      Width = 55
+      Height = 14
+      Caption = '05/2017'
+    end
+    object Label6: TLabel
+      Left = 32
+      Top = 131
+      Width = 90
+      Height = 14
+      Caption = 'Vers'#227'o Atual:  '
+    end
+    object Label7: TLabel
+      Left = 138
+      Top = 111
+      Width = 48
+      Height = 14
+      Caption = '1.12.09'
+    end
+    object Label8: TLabel
+      Left = 140
+      Top = 131
+      Width = 48
+      Height = 14
+      Caption = '1.12.09'
+    end
+    object Label9: TLabel
+      Left = 207
+      Top = 131
+      Width = 55
+      Height = 14
+      Caption = '05/2017'
+    end
+    object Panel2: TPanel
+      Left = 378
+      Top = 180
+      Width = 84
+      Height = 25
+      Caption = 'Fechar'
+      Color = clActiveCaption
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWhite
+      Font.Height = -16
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentBackground = False
+      ParentFont = False
+      TabOrder = 0
+      OnClick = Panel2Click
+    end
+  end
+end

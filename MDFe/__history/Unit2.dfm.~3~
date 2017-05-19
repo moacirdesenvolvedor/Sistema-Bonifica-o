@@ -1,0 +1,69 @@
+object RelBonifVend: TRelBonifVend
+  Left = 0
+  Top = 0
+  Caption = 'Relat'#243'rio de Bonifica'#231#227'o por Vendedor'
+  ClientHeight = 139
+  ClientWidth = 337
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Panel1: TPanel
+    Left = 0
+    Top = 0
+    Width = 337
+    Height = 137
+    TabOrder = 0
+    object Label1: TLabel
+      Left = 99
+      Top = 16
+      Width = 124
+      Height = 16
+      Caption = 'Per'#237'odo de Emiss'#227'o'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object Button2: TButton
+      Left = 130
+      Top = 95
+      Width = 57
+      Height = 25
+      Caption = 'OK'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
+      TabOrder = 0
+      OnClick = Button2Click
+    end
+    object dpeInicio: TDateTimePicker
+      Left = 56
+      Top = 50
+      Width = 93
+      Height = 21
+      Date = 42808.345019710650000000
+      Time = 42808.345019710650000000
+      TabOrder = 1
+    end
+    object dpeFinal: TDateTimePicker
+      Left = 171
+      Top = 50
+      Width = 93
+      Height = 21
+      Date = 42808.344783171300000000
+      Time = 42808.344783171300000000
+      TabOrder = 2
+    end
+  end
+end

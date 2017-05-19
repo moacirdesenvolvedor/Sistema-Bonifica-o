@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2016/06/09 15:08:25.000.932,=C:\Users\julio\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2016/06/10 15:30:28.000.948,C:\Users\julio\Documents\Embarcadero\Studio\Projects\Unit1.dfm=D:\programas Delphi\MDFe\Unit1.dfm</Transaction>
+    <Transaction>2016/06/10 15:30:28.000.943,C:\Users\julio\Documents\Embarcadero\Studio\Projects\Unit1.pas=D:\programas Delphi\MDFe\Unit1.pas</Transaction>
+    <Transaction>2016/06/10 15:30:40.000.043,C:\Users\julio\Documents\Embarcadero\Studio\Projects\Project1.dproj=D:\programas Delphi\MDFe\Project1.dproj</Transaction>
+    <Transaction>2017/03/01 15:55:06.000.153,D:\temp\Sistema Atualização MDFe\MDFe\Project1.dproj=D:\temp\Sistema Atualização MDFe\MDFe\Project1.dproj</Transaction>
+    <Transaction>2017/03/02 14:16:49.000.157,D:\temp\Sistema Atualização MDFe\MDFe\Project1.dproj=D:\temp\Sistema Atualização MDFe\MDFe\Project1.dproj</Transaction>
+    <Transaction>2017/03/09 09:24:40.009,D:\temp\Sistema Atualização MDFe\MDFe\Novo\Unit1.pas=D:\temp\Sistema Atualização MDFe\MDFe\Unit1.pas</Transaction>
+    <Transaction>2017/03/09 09:24:40.037,D:\temp\Sistema Atualização MDFe\MDFe\Novo\Unit1.dfm=D:\temp\Sistema Atualização MDFe\MDFe\Unit1.dfm</Transaction>
+    <Transaction>2017/03/09 09:24:48.024,D:\temp\Sistema Atualização MDFe\MDFe\Novo\Project1.dproj=D:\temp\Sistema Atualização MDFe\MDFe\Project1.dproj</Transaction>
+  </Transactions>
+</BorlandProject>

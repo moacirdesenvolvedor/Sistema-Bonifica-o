@@ -1,0 +1,56 @@
+
+unit ClienteVO;
+
+interface
+
+
+//
+//CREATE TABLE CLIENTE (
+//    ID        INTEGER,
+//    NOME      VARCHAR(50),
+//    ENDERECO  VARCHAR(50),
+//    CEP       VARCHAR(50),
+//    NUMERO    VARCHAR(50),
+//    BAIRRO    VARCHAR(50),
+//    CIDADE    VARCHAR(50),
+//    UF        VARCHAR(10),
+//    TELEFONE  VARCHAR(20),
+//    EMAIL     VARCHAR(50)
+//);
+
+
+type
+  TClienteVO = class
+  private
+    FIDBONI: Integer;
+    FNOME: String;
+    FEMAIL: String;
+    FENDERECO: String;
+    FBAIRRO: String;
+    FUF: String;
+    FCEP: String;
+    FNUMERO: String;
+    FCIDADE: String;
+    FTELEFONE: String;
+    FCELULAR: String;
+
+
+  published
+
+    property IDBONI:                  Integer   read FIDBONI                  write FIDBONI;
+    property Nome:                    String    read FNOME                write FNOME;
+    property Email:                   String    read FEMAIL               write FEMAIL;
+    property ENDERECO:                String    read FENDERECO            write FENDERECO;
+    property Bairro:                  String    read FBAIRRO              write FBAIRRO;
+    property UF:                      String    read FUF                  write FUF;
+    property CEP:                     String    read FCEP                 write FCEP;
+    property NUMERO:                  String    read FNUMERO              write FNUMERO;
+    property Cidade:                  String    read FCIDADE              write FCIDADE;
+    property Telefone:                String    read FTELEFONE            write FTELEFONE;
+    property Celular:                 String    read FCELULAR             write FCELULAR;
+
+  end;
+
+implementation
+
+end.

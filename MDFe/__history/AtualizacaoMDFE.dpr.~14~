@@ -1,0 +1,18 @@
+program AtualizacaoMDFE;
+
+uses
+  Vcl.Forms,
+  Unit1 in 'Unit1.pas' {ForPrincipal},
+  Unit2 in 'Unit2.pas' {RelBonifVend},
+  UnSobre in 'UnSobre.pas' {FrmSobre};
+
+{$R *.res}
+
+begin
+  Application.Initialize;
+  Application.MainFormOnTaskbar := True;
+  Application.CreateForm(TForPrincipal, ForPrincipal);
+  Application.CreateForm(TRelBonifVend, RelBonifVend);
+  Application.CreateForm(TFrmSobre, FrmSobre);
+  Application.Run;
+end.

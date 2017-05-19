@@ -1,0 +1,59 @@
+
+unit VendasVO;
+
+interface
+
+
+//
+//CREATE TABLE CLIENTE (
+//    ID        INTEGER,
+//    NOME      VARCHAR(50),
+//    ENDERECO  VARCHAR(50),
+//    VALORTOTAL       VARCHAR(50),
+//    NUMERO    VARCHAR(50),
+//    CODCFOB    VARCHAR(50),
+//    CIDADE    VARCHAR(50),
+//    CODVEN1B        VARCHAR(10),
+//    TELEFONE  VARCHAR(20),
+//    EMAIL     VARCHAR(50)
+//);
+
+
+type
+  TClienteVO.pas = class
+  private
+    FIDBONI: Integer;
+    FCODCPGB: String;
+    FHISTORICOB: String;
+    FDATAVENDA: String;
+
+    FCODCFOB: String;
+    FCODVEN1B: String;
+    FVALORTOTAL: String;
+    FNUMERO: String;
+    FCIDADE: String;
+    FTELEFONE: String;
+    FCELULAR: String;
+
+
+  published
+
+    property IDBONI:                  Integer   read FIDBONI              write FIDBONI;
+    property CODCPGB:                 String    read FCODCPGB             write FCODCPGB;
+    property HISTORICOB:              String    read FHISTORICOB           write FHISTORICOB;
+    property DATAVENDA:               String    read FDATAVENDA            write FDATAVENDA;
+
+    property CODCFOB:                 String    read FCODCFOB             write FCODCFOB;
+    property CODVEN1B:                String    read FCODVEN1B            write FCODVEN1B;
+
+    property VALORTOTAL:                     String    read FVALORTOTAL                 write FVALORTOTAL;
+    property NUMERO:                  String    read FNUMERO              write FNUMERO;
+    property Cidade:                  String    read FCIDADE              write FCIDADE;
+    property Telefone:                String    read FTELEFONE            write FTELEFONE;
+    property Celular:                 String    read FCELULAR             write FCELULAR;
+
+  end;
+
+implementation
+
+end.

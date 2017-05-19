@@ -1,0 +1,786 @@
+unit Unit1;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Data.DB, Vcl.StdCtrls, Vcl.Mask,
+  Vcl.DBCtrls, Data.Win.ADODB, Vcl.Grids, Vcl.DBGrids, Vcl.Imaging.pngimage,
+  Vcl.ExtCtrls, Vcl.ComCtrls, Vcl.Menus, Vcl.ExtDlgs, Datasnap.DBClient, COMOBJ, SHELLAPI,
+  Vcl.Buttons, frxClass, frxDBSet;
+
+type
+  TForPrincipal = class(TForm)
+    ADOConnection1: TADOConnection;
+    Panel1: TPanel;
+    Panel2: TPanel;
+    DSCarga: TADODataSet;
+    Timer1: TTimer;
+    StatusBar1: TStatusBar;
+    QCarga: TADOQuery;
+    MainMenu1: TMainMenu;
+    Arquivo1: TMenuItem;
+    Relatrio1: TMenuItem;
+    Configurao1: TMenuItem;
+    Sobre1: TMenuItem;
+    Sair1: TMenuItem;
+    Novo1: TMenuItem;
+    Editar1: TMenuItem;
+    Excluir1: TMenuItem;
+    Fechar1: TMenuItem;
+    VendedoresCadastrado1: TMenuItem;
+    ConsultaporData1: TMenuItem;
+    HistricoporVendedor1: TMenuItem;
+    SaldoporVendedor1: TMenuItem;
+    N1: TMenuItem;
+    GeradordeRelatrio1: TMenuItem;
+    ConexoDB1: TMenuItem;
+    LayOut1: TMenuItem;
+    Sistema1: TMenuItem;
+    Verso1: TMenuItem;
+    Usarios1: TMenuItem;
+    Cadastro1: TMenuItem;
+    Consulta1: TMenuItem;
+    Panel3: TPanel;
+    EditIdmov: TEdit;
+    EditPeso: TEdit;
+    Button1: TButton;
+    Label3: TLabel;
+    Label4: TLabel;
+    Label2: TLabel;
+    Panel4: TPanel;
+    Panel5: TPanel;
+    Label8: TLabel;
+    OpenDialog1: TOpenDialog;
+    strGrid: TStringGrid;
+    Button10: TButton;
+    Image2: TImage;
+    SGTitulo: TStringGrid;
+    Image3: TImage;
+    Image4: TImage;
+    Image5: TImage;
+    Image6: TImage;
+    BtSair: TImage;
+    SpeedButton1: TSpeedButton;
+    lab: TLabel;
+    txttotal: TDBEdit;
+    Fastgerador: TfrxReport;
+    frxDBDataset1: TfrxDBDataset;
+    QueryRel: TADOQuery;
+    QueryRelCODCOLIGADA: TSmallintField;
+    QueryRelIDMOV: TIntegerField;
+    QueryRelCODFILIAL: TSmallintField;
+    QueryRelCODLOC: TStringField;
+    QueryRelCODLOCENTREGA: TStringField;
+    QueryRelCODLOCDESTINO: TStringField;
+    QueryRelCODCFO: TStringField;
+    QueryRelCODCFONATUREZA: TStringField;
+    QueryRelNUMEROMOV: TStringField;
+    QueryRelSERIE: TStringField;
+    QueryRelCODTMV: TStringField;
+    QueryRelTIPO: TStringField;
+    QueryRelSTATUS: TStringField;
+    QueryRelMOVIMPRESSO: TSmallintField;
+    QueryRelDOCIMPRESSO: TSmallintField;
+    QueryRelFATIMPRESSA: TSmallintField;
+    QueryRelDATAEMISSAO: TDateTimeField;
+    QueryRelDATASAIDA: TDateTimeField;
+    QueryRelDATAEXTRA1: TDateTimeField;
+    QueryRelDATAEXTRA2: TDateTimeField;
+    QueryRelCODRPR: TStringField;
+    QueryRelCOMISSAOREPRES: TBCDField;
+    QueryRelNORDEM: TStringField;
+    QueryRelCODCPG: TStringField;
+    QueryRelNUMEROTRIBUTOS: TSmallintField;
+    QueryRelVALORBRUTO: TBCDField;
+    QueryRelVALORLIQUIDO: TBCDField;
+    QueryRelVALOROUTROS: TBCDField;
+    QueryRelOBSERVACAO: TStringField;
+    QueryRelPERCENTUALFRETE: TBCDField;
+    QueryRelVALORFRETE: TBCDField;
+    QueryRelPERCENTUALSEGURO: TBCDField;
+    QueryRelVALORSEGURO: TBCDField;
+    QueryRelPERCENTUALDESC: TBCDField;
+    QueryRelVALORDESC: TBCDField;
+    QueryRelPERCENTUALDESP: TBCDField;
+    QueryRelVALORDESP: TBCDField;
+    QueryRelPERCENTUALEXTRA1: TBCDField;
+    QueryRelVALOREXTRA1: TBCDField;
+    QueryRelPERCENTUALEXTRA2: TBCDField;
+    QueryRelVALOREXTRA2: TBCDField;
+    QueryRelPERCCOMISSAO: TBCDField;
+    QueryRelCODMEN: TStringField;
+    QueryRelCODMEN2: TStringField;
+    QueryRelVIADETRANSPORTE: TStringField;
+    QueryRelPLACA: TStringField;
+    QueryRelCODETDPLACA: TStringField;
+    QueryRelPESOLIQUIDO: TBCDField;
+    QueryRelPESOBRUTO: TBCDField;
+    QueryRelMARCA: TStringField;
+    QueryRelNUMERO: TIntegerField;
+    QueryRelQUANTIDADE: TIntegerField;
+    QueryRelESPECIE: TStringField;
+    QueryRelCODTB1FAT: TStringField;
+    QueryRelCODTB2FAT: TStringField;
+    QueryRelCODTB3FAT: TStringField;
+    QueryRelCODTB4FAT: TStringField;
+    QueryRelCODTB5FAT: TStringField;
+    QueryRelCODTB1FLX: TStringField;
+    QueryRelCODTB2FLX: TStringField;
+    QueryRelCODTB3FLX: TStringField;
+    QueryRelCODTB4FLX: TStringField;
+    QueryRelCODTB5FLX: TStringField;
+    QueryRelIDMOVRELAC: TIntegerField;
+    QueryRelIDMOVLCTFLUXUS: TIntegerField;
+    QueryRelIDMOVPEDDESDOBRADO: TIntegerField;
+    QueryRelCODMOEVALORLIQUIDO: TStringField;
+    QueryRelDATABASEMOV: TDateTimeField;
+    QueryRelDATAMOVIMENTO: TDateTimeField;
+    QueryRelNUMEROLCTGERADO: TSmallintField;
+    QueryRelGEROUFATURA: TSmallintField;
+    QueryRelNUMEROLCTABERTO: TSmallintField;
+    QueryRelFLAGEXPORTACAO: TSmallintField;
+    QueryRelEMITEBOLETA: TStringField;
+    QueryRelCODMENDESCONTO: TStringField;
+    QueryRelCODMENDESPESA: TStringField;
+    QueryRelCODMENFRETE: TStringField;
+    QueryRelFRETECIFOUFOB: TSmallintField;
+    QueryRelUSADESPFINANC: TSmallintField;
+    QueryRelFLAGEXPORFISC: TSmallintField;
+    QueryRelFLAGEXPORFAZENDA: TSmallintField;
+    QueryRelVALORADIANTAMENTO: TBCDField;
+    QueryRelCODTRA: TStringField;
+    QueryRelCODTRA2: TStringField;
+    QueryRelSTATUSLIBERACAO: TSmallintField;
+    QueryRelCODCFOAUX: TStringField;
+    QueryRelIDLOT: TIntegerField;
+    QueryRelITENSAGRUPADOS: TSmallintField;
+    QueryRelFLAGIMPRESSAOFAT: TStringField;
+    QueryRelDATACANCELAMENTOMOV: TDateTimeField;
+    QueryRelVALORRECEBIDO: TBCDField;
+    QueryRelSEGUNDONUMERO: TStringField;
+    QueryRelCODCCUSTO: TStringField;
+    QueryRelCODCXA: TStringField;
+    QueryRelCODVEN1: TStringField;
+    QueryRelCODVEN2: TStringField;
+    QueryRelCODVEN3: TStringField;
+    QueryRelCODVEN4: TStringField;
+    QueryRelPERCCOMISSAOVEN2: TBCDField;
+    QueryRelCODCOLCFO: TSmallintField;
+    QueryRelCODCOLCFONATUREZA: TSmallintField;
+    QueryRelCODUSUARIO: TStringField;
+    QueryRelCODFILIALENTREGA: TSmallintField;
+    QueryRelCODFILIALDESTINO: TSmallintField;
+    QueryRelFLAGAGRUPADOFLUXUS: TSmallintField;
+    QueryRelCODCOLCXA: TSmallintField;
+    QueryRelGERADOPORLOTE: TSmallintField;
+    QueryRelCODDEPARTAMENTO: TStringField;
+    QueryRelCODCCUSTODESTINO: TStringField;
+    QueryRelCODEVENTO: TSmallintField;
+    QueryRelSTATUSEXPORTCONT: TSmallintField;
+    QueryRelCODLOTE: TIntegerField;
+    QueryRelSTATUSCHEQUE: TSmallintField;
+    QueryRelDATAENTREGA: TDateTimeField;
+    QueryRelDATAPROGRAMACAO: TDateTimeField;
+    QueryRelIDNAT: TIntegerField;
+    QueryRelIDNAT2: TIntegerField;
+    QueryRelCAMPOLIVRE1: TStringField;
+    QueryRelCAMPOLIVRE2: TStringField;
+    QueryRelCAMPOLIVRE3: TStringField;
+    QueryRelGEROUCONTATRABALHO: TSmallintField;
+    QueryRelGERADOPORCONTATRABALHO: TSmallintField;
+    QueryRelHORULTIMAALTERACAO: TDateTimeField;
+    QueryRelCODLAF: TStringField;
+    QueryRelDATAFECHAMENTO: TDateTimeField;
+    QueryRelNSEQDATAFECHAMENTO: TSmallintField;
+    QueryRelNUMERORECIBO: TStringField;
+    QueryRelIDLOTEPROCESSO: TIntegerField;
+    QueryRelIDOBJOF: TStringField;
+    QueryRelCODAGENDAMENTO: TIntegerField;
+    QueryRelCHAPARESP: TStringField;
+    QueryRelIDLOTEPROCESSOREFAT: TIntegerField;
+    QueryRelINDUSOOBJ: TBCDField;
+    QueryRelSUBSERIE: TStringField;
+    QueryRelSTSCOMPRAS: TStringField;
+    QueryRelCODLOCEXP: TStringField;
+    QueryRelIDCLASSMOV: TIntegerField;
+    QueryRelCODENTREGA: TStringField;
+    QueryRelCODFAIXAENTREGA: TStringField;
+    QueryRelDTHENTREGA: TDateTimeField;
+    QueryRelCONTABILIZADOPORTOTAL: TSmallintField;
+    QueryRelCODLAFE: TStringField;
+    QueryRelIDPRJ: TIntegerField;
+    QueryRelNUMEROCUPOM: TIntegerField;
+    QueryRelNUMEROCAIXA: TIntegerField;
+    QueryRelFLAGEFEITOSALDO: TSmallintField;
+    QueryRelINTEGRADOBONUM: TSmallintField;
+    QueryRelCODMOELANCAMENTO: TStringField;
+    QueryRelNAONUMERADO: TStringField;
+    QueryRelFLAGPROCESSADO: TSmallintField;
+    QueryRelABATIMENTOICMS: TBCDField;
+    QueryRelTIPOCONSUMO: TSmallintField;
+    QueryRelHORARIOEMISSAO: TDateTimeField;
+    QueryRelDATARETORNO: TDateTimeField;
+    QueryRelUSUARIOCRIACAO: TStringField;
+    QueryRelDATACRIACAO: TDateTimeField;
+    QueryRelIDCONTATOENTREGA: TIntegerField;
+    QueryRelIDCONTATOCOBRANCA: TIntegerField;
+    QueryRelSTATUSSEPARACAO: TStringField;
+    QueryRelSTSEMAIL: TSmallintField;
+    QueryRelVALORFRETECTRC: TBCDField;
+    QueryRelPONTOVENDA: TStringField;
+    QueryRelPRAZOENTREGA: TIntegerField;
+    QueryRelVALORBRUTOINTERNO: TBCDField;
+    QueryRelIDAIDF: TSmallintField;
+    QueryRelIDSALDOESTOQUE: TIntegerField;
+    QueryRelVINCULADOESTOQUEFL: TSmallintField;
+    QueryRelIDREDUCAOZ: TIntegerField;
+    QueryRelHORASAIDA: TDateTimeField;
+    QueryRelCODMUNSERVICO: TStringField;
+    QueryRelCODETDMUNSERV: TStringField;
+    QueryRelAPROPRIADO: TSmallintField;
+    QueryRelCODIGOSERVICO: TStringField;
+    QueryRelDATADEDUCAO: TDateTimeField;
+    QueryRelCODDIARIO: TStringField;
+    QueryRelSEQDIARIO: TStringField;
+    QueryRelSEQDIARIOESTORNO: TStringField;
+    QueryRelINSSEMOUTRAEMPRESA: TBCDField;
+    QueryRelIDMOVCTRC: TIntegerField;
+    QueryRelDATAPROGRAMACAOANT: TDateTimeField;
+    QueryRelCODTDO: TStringField;
+    QueryRelVALORDESCCONDICIONAL: TBCDField;
+    QueryRelVALORDESPCONDICIONAL: TBCDField;
+    QueryRelCODIGOIRRF: TStringField;
+    QueryRelDEDUCAOIRRF: TBCDField;
+    QueryRelPERCENTBASEINSS: TBCDField;
+    QueryRelPERCBASEINSSEMPREGADO: TBCDField;
+    QueryRelCONTORCAMENTOANTIGO: TSmallintField;
+    QueryRelCODDEPTODESTINO: TStringField;
+    QueryRelDATACONTABILIZACAO: TDateTimeField;
+    QueryRelCODVIATRANSPORTE: TStringField;
+    QueryRelVALORSERVICO: TBCDField;
+    QueryRelSEQUENCIALESTOQUE: TIntegerField;
+    QueryRelDISTANCIA: TIntegerField;
+    QueryRelUNCALCULO: TStringField;
+    QueryRelFORMACALCULO: TStringField;
+    QueryRelINTEGRADOAUTOMACAO: TSmallintField;
+    QueryRelINTEGRAAPLICACAO: TStringField;
+    QueryRelCLASSECONSUMO: TStringField;
+    QueryRelTIPOASSINANTE: TStringField;
+    QueryRelFASE: TStringField;
+    QueryRelTIPOUTILIZACAO: TStringField;
+    QueryRelGRUPOTENSAO: TStringField;
+    QueryRelDATALANCAMENTO: TDateTimeField;
+    QueryRelEXTENPORANEO: TSmallintField;
+    QueryRelRECIBONFESTATUS: TStringField;
+    QueryRelRECIBONFETIPO: TSmallintField;
+    QueryRelRECIBONFENUMERO: TStringField;
+    QueryRelRECIBONFESITUACAO: TSmallintField;
+    QueryRelIDMOVCFO: TIntegerField;
+    QueryRelOCAUTONOMO: TSmallintField;
+    QueryRelVALORMERCADORIAS: TBCDField;
+    QueryRelNATUREZAVOLUMES: TStringField;
+    QueryRelVOLUMES: TStringField;
+    QueryRelCRO: TSmallintField;
+    QueryRelUSARATEIOVALORFIN: TSmallintField;
+    QueryRelRECIBONFESERIE: TStringField;
+    QueryRelCODCOLCFOORIGEM: TSmallintField;
+    QueryRelCODCFOORIGEM: TStringField;
+    QueryRelVALORCTRCARATEAR: TBCDField;
+    QueryRelCODCOLCFOAUX: TSmallintField;
+    QueryRelVRBASEINSSOUTRAEMPRESA: TBCDField;
+    QueryRelIDCEICFO: TIntegerField;
+    QueryRelCHAVEACESSONFE: TStringField;
+    QueryRelVLRSECCAT: TBCDField;
+    QueryRelVLRDESPACHO: TBCDField;
+    QueryRelVLRPEDAGIO: TBCDField;
+    QueryRelVLRFRETEOUTROS: TBCDField;
+    QueryRelABATIMENTONAOTRIB: TBCDField;
+    QueryRelRATEIOCCUSTODEPTO: TBCDField;
+    QueryRelVALORRATEIOLAN: TBCDField;
+    QueryRelCODCOLCFOTRANSFAT: TSmallintField;
+    QueryRelCODCFOTRANSFAT: TStringField;
+    QueryRelCODUSUARIOAPROVADESC: TStringField;
+    QueryRelIDINTEGRACAO: TStringField;
+    QueryRelSTATUSANTERIOR: TStringField;
+    QueryRelVALORBRUTOORIG: TBCDField;
+    QueryRelVALORLIQUIDOORIG: TBCDField;
+    QueryRelVALOROUTROSORIG: TBCDField;
+    QueryRelVALORRATEIOLANORIG: TBCDField;
+    QueryRelDATAPROCESSAMENTO: TDateTimeField;
+    QueryRelIDNATFRETE: TIntegerField;
+    QueryRelIDOPERACAO: TIntegerField;
+    QueryRelRECCREATEDBY: TStringField;
+    QueryRelRECCREATEDON: TDateTimeField;
+    QueryRelRECMODIFIEDBY: TStringField;
+    QueryRelRECMODIFIEDON: TDateTimeField;
+    SpeedButton2: TSpeedButton;
+    SpeedButton3: TSpeedButton;
+    QBonigerar: TADOQuery;
+    DSBonigerar: TADODataSet;
+    TableBoni: TADOTable;
+    TableBoniIDBONI: TIntegerField;
+    TableBoniIDPRDB: TIntegerField;
+    TableBoniDESCPRODUTO: TStringField;
+    TableBoniQUANTIDADEB: TIntegerField;
+    TableBoniCODUNDB: TStringField;
+    TableBoniVALORITEM1: TBCDField;
+    TableBoniVALORITEM2: TBCDField;
+    TableBoniVALORITEM3: TBCDField;
+    TableBoniVALORITEM4: TBCDField;
+    TableBoniVALORITEM5: TBCDField;
+    TableBoniVALORITEMVEND: TBCDField;
+    TableBoniCODCPGB: TStringField;
+    TableBoniHISTORICOB: TStringField;
+    TableBoniDATAVENDA: TDateTimeField;
+    TableBoniCODCFOB: TStringField;
+    TableBoniCODVEN1B: TStringField;
+    TableBoniVALORTOTAL: TBCDField;
+    TableBoniTIPOOPERACAO: TStringField;
+    TableBoniSALDOANTERIOR: TBCDField;
+    TableBoniSALDOPOSTERIOR: TBCDField;
+    TableBoniNUMEROMOVB: TStringField;
+    TableBoniSTATUSB: TStringField;
+    TableBoniDATAEXTRA1B: TDateTimeField;
+    TableBoniDATAEXTRA2B: TDateTimeField;
+    TableBoniCOMISSAOREPRESB: TBCDField;
+    TableBoniVALOROUTROSB: TBCDField;
+    TableBoniVALORDESCB: TBCDField;
+    TableBoniVALORDESPB: TBCDField;
+    TableBoniVALOREXTRA2B: TBCDField;
+    TableBoniCODTB1FATB: TStringField;
+    TableBoniCODTB2FATB: TStringField;
+    TableBoniCODTB3FATB: TStringField;
+    TableBoniCODTB4FATB: TStringField;
+    TableBoniCODTB5FATB: TStringField;
+    TableBoniCODTB1FLXB: TStringField;
+    TableBoniCODTB2FLXB: TStringField;
+    TableBoniCODTB3FLXB: TStringField;
+    TableBoniCODTB4FLXB: TStringField;
+    TableBoniCODTB5FLXB: TStringField;
+    TableBoniDATABASEMOVB: TDateTimeField;
+    TableBoniDATAMOVIMENTOB: TDateTimeField;
+    TableBoniCODUSUARIOB: TStringField;
+    TableBoniCAMPOLIVRE1B: TStringField;
+    TableBoniCAMPOLIVRE2B: TStringField;
+    TableBoniCAMPOLIVRE3B: TStringField;
+    TableBoniNUMEROEXTRA1: TIntegerField;
+    TableBoniNUMEROEXTRA2: TIntegerField;
+    TableBoniDATACRIACAOB: TDateTimeField;
+    ProgressBar1: TProgressBar;
+    procedure Button1Click(Sender: TObject);
+    procedure Timer1Timer(Sender: TObject);
+    procedure EditIdmovKeyPress(Sender: TObject; var Key: Char);
+    procedure EditPesoKeyPress(Sender: TObject; var Key: Char);
+    procedure Button10Click(Sender: TObject);
+    procedure Button4Click(Sender: TObject);
+    procedure Image2Click(Sender: TObject);
+    procedure Image4Click(Sender: TObject);
+    procedure Image5Click(Sender: TObject);
+    procedure Image6Click(Sender: TObject);
+    procedure Image3Click(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure FormCreate(Sender: TObject);
+    procedure SpeedButton3Click(Sender: TObject);
+    procedure Button2Click(Sender: TObject);
+    procedure ConsultaporData1Click(Sender: TObject);
+    procedure Sistema1Click(Sender: TObject);
+    procedure Verso1Click(Sender: TObject);
+
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  ForPrincipal: TForPrincipal;
+
+implementation
+
+{$R *.dfm}
+
+uses Unit2, UnSobre, UnVersao;
+
+procedure TForPrincipal.Button10Click(Sender: TObject);
+var
+  vArquivo : TextFile;
+  vLinha,mCOD_OCOR, mTIPOREG, mFAV, mDATAPGTO,mUNIDADE: string;
+  vNUMREC,vRowStrGrid, I,Cont,col,lin :  integer;
+  mVALOR : extended;
+// Limpa StringGrid
+begin
+  for lin := 0 to strGrid.RowCount - 1 do
+  for col := 0 to strGrid.ColCount - 1 do
+  strGrid.Cells[col, lin] := '';
+  with strGrid do
+    begin
+      Cells[1,0] := 'Produto';
+      Cells[2,0] := 'Quant';
+      Cells[3,0] := 'Valor';
+      Cells[4,0] := 'Data';
+      Cells[5,0] := 'Und';
+      ColWidths[0]:=0;
+    end;
+begin
+  if (OpenDialog1.Execute) then
+    begin
+      for Cont := 0 to OpenDialog1.Files.Count - 1 do
+        begin
+// Abre o txt
+          AssignFile(vArquivo,OpenDialog1.Files[Cont]);
+          {$I-}
+          Reset(vArquivo);
+          {$I+}
+//         vRowStrGrid := 1;
+
+// Limpa StringGrid
+{          with strGrid do
+          for I := 1 to RowCount -1 do
+            Rows[I].Clear;
+ }
+// Loop para percorrer todo
+            begin
+              while not eof(vArquivo) do
+                begin
+
+// Limpa a variavel Linha
+                  vLinha := '';
+
+// Lê o conteúdo da linha atual
+                  ReadLn(vArquivo,vLinha);
+
+// Atribui valores as variaveis utilizando o comando COPY
+                  mTIPOREG  := copy(vLinha,2,06);
+                  mCOD_OCOR := copy(vLinha,46,06);
+                  mFAV      := copy(vLinha,52,10);
+                  mDATAPGTO := copy(vLinha,112,10);
+                  mUNIDADE  := copy(vLinha,322,03);
+                  strGrid.Cells[1,vRowStrGrid] := mTIPOREG;
+                  strGrid.Cells[2,vRowStrGrid] := mCOD_OCOR;
+                  strGrid.Cells[3,vRowStrGrid] := mFAV;
+                  strGrid.Cells[4,vRowStrGrid] := mDATAPGTO;
+                  strGrid.Cells[5,vRowStrGrid] := mUNIDADE;
+
+// Variavel de controle de linha stringgrid
+                  vRowStrGrid := vRowStrGrid + 1;
+                end;
+                  Closefile (vArquivo);
+            end;
+        end;
+    end;
+end;
+ end;
+
+procedure TForPrincipal.Button1Click(Sender: TObject);
+begin
+    If EditIdmov.text = ''  then
+      begin showmessage('Por favor, digite algum valor no Identificador de Movimento'); abort;
+      end;
+        begin
+            If EditPeso.text = ''  then
+               begin showmessage('Por favor, digite algum valor no Peso'); abort;
+        end;
+begin
+    if (MessageDlg('Deseja Atualizar Movimento nº ' +EditIdmov.text +' Com Peso de ' +EditPeso.Text, MtConfirmation, [mbYes,mbNo] , 0)= MrYes) then
+      begin
+      //PESO LIQUIDO
+        QCarga.Close;
+        QCarga.SQL.Clear;
+        QCarga.SQL.Add ('UPDATE TMOV SET PESOLIQUIDO=:peso');
+        QCarga.SQL.Add ('WHERE IDMOV=:mov');
+        QCarga.Parameters.ParamByName ('peso').Value := EditPeso.Text;
+        QCarga.Parameters.ParamByName ('mov').Value := EditIdmov.Text;
+        QCarga.ExecSQL;
+     //PESO PRUTO
+        QCarga.SQL.Clear;
+        QCarga.SQL.Add ('UPDATE TMOV SET PESOBRUTO=:peso');
+        QCarga.SQL.Add ('WHERE IDMOV=:mov');
+        QCarga.Parameters.ParamByName ('peso').Value := EditPeso.Text;
+        QCarga.Parameters.ParamByName ('mov').Value := EditIdmov.Text;
+        QCarga.ExecSQL;
+     //CIDADES ESTADOS
+        QCarga.SQL.Clear;
+        QCarga.SQL.Add ('UPDATE TCTRC SET CODETDCOLETA=''GO'',CODMUNICIPIOCOLETA=17104,CODMUNICIPIOENTREGA=CODMUNICIPIO,CODETDENTREGA=UF');
+        QCarga.SQL.Add ('WHERE IDMOV=:mov');
+        QCarga.Parameters.ParamByName ('mov').Value := EditIdmov.Text;
+        QCarga.ExecSQL;
+        EditIdmov.Clear;
+        EditPeso.Clear;
+        EditIdmov.SetFocus;
+        Showmessage ('Atualização Realizada com Sucesso');
+      end
+    else
+        Showmessage ('Atualização Cancelada');
+end;
+end;
+end;
+procedure TForPrincipal.Button2Click(Sender: TObject);
+//var
+//    DataInicio,  DataFinal : TDateTime;
+begin
+{
+With QueryRel do
+begin
+Close;
+SQL.Clear;
+SQL.Add('SELECT * FROM TMOV WHERE DATAEMISSAO between =:DataInicio and =:DataFinal AND CODTMV = ''2.2.01''');
+Parameters.ParamByName('DataInicio').DataType.ftDate := DateTimePickerIni.DateTime;
+Parameters.ParamByName('DataFinal').DataType.ftDate := DateTimePickerFim.DateTime;
+Open;
+end
+end;
+
+----  }
+
+end;
+
+
+procedure TForPrincipal.Button4Click(Sender: TObject);
+
+begin {create variant array where we'll copy our data}
+
+    end;
+
+procedure TForPrincipal.ConsultaporData1Click(Sender: TObject);
+begin
+  RelBonifVend :=TRelBonifVend.Create(Application);
+  RelBonifVend.Show;
+end;
+
+procedure TForPrincipal.EditIdmovKeyPress(Sender: TObject; var Key: Char);
+begin
+    if not( key in['0'..'9',#08] ) then
+      key:=#0;
+end;
+
+procedure TForPrincipal.EditPesoKeyPress(Sender: TObject; var Key: Char);
+begin
+    if not (key in ['0'..'9',',',#8]) then
+      key :=#0;
+end;
+
+procedure TForPrincipal.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+  if (Application.MessageBox('Deseja Realmente Sair?','Aviso',36)=6) then
+  begin
+    Application.Terminate;
+  end
+    else
+    begin
+      abort
+    end;
+end;
+
+procedure TForPrincipal.FormCreate(Sender: TObject);
+begin
+//    with strGrid do begin
+//      Colwidths[0] := 40;
+//      Colwidths[1] := 400;
+//    end;
+end;
+
+procedure TForPrincipal.Image2Click(Sender: TObject);
+var
+  vArquivo : TextFile;
+  vLinha,mCOD_OCOR, mTIPOREG, mFAV, mDATAPGTO,mUNIDADE: string;
+  vNUMREC,vRowStrGrid, I,Cont,col,lin,S :  integer;
+  mVALOR : extended;
+  ValorTotal,SomaTotal :Real;
+// Limpa StringGrid
+begin
+  for lin := 1 to strGrid.RowCount - 1 do
+  for col := 1 to strGrid.ColCount - 1 do
+  strGrid.Cells[col, lin] := '';
+  with SGTitulo do
+    begin
+      Cells[1,0] := 'Produto';
+      Cells[2,0] := 'Quant';
+      Cells[3,0] := 'Valor';
+      Cells[4,0] := 'Data';
+      Cells[5,0] := 'Und';
+      ColWidths[0]:=0;
+      strgrid.ColWidths[0]:=0;
+    end;
+begin
+  if (OpenDialog1.Execute) then
+    begin
+      for Cont := 0 to OpenDialog1.Files.Count - 1 do
+        begin
+// Abre o txt
+          AssignFile(vArquivo,OpenDialog1.Files[Cont]);
+          {$I-}
+          Reset(vArquivo);
+          {$I+}
+
+// Loop para percorrer todo
+            begin
+              while not eof(vArquivo) do
+                begin
+
+// Limpa a variavel Linha
+                  vLinha := '';
+
+// Lê o conteúdo da linha atual
+                  ReadLn(vArquivo,vLinha);
+
+// Atribui valores as variaveis utilizando o comando COPY
+                  mTIPOREG  := copy(vLinha,2,06);
+                  mCOD_OCOR := copy(vLinha,46,06);
+                  mFAV      := copy(vLinha,52,10);
+                  mDATAPGTO := copy(vLinha,112,10);
+                  mUNIDADE  := copy(vLinha,322,03);
+                  strGrid.Cells[1,vRowStrGrid] := mTIPOREG;
+                  strGrid.Cells[2,vRowStrGrid] := mCOD_OCOR;
+                  strGrid.Cells[3,vRowStrGrid] := mFAV;
+                  strGrid.Cells[4,vRowStrGrid] := mDATAPGTO;
+                  strGrid.Cells[5,vRowStrGrid] := mUNIDADE;
+
+// Variavel de controle de linha stringgrid
+                  vRowStrGrid := vRowStrGrid + 1;
+                  begin
+        //          ValorTotal:= ValorTotal + strtofloat(strGrid.Cells[1,lin]);
+                  end;
+                end;
+  //                 EditSubTotal.Text:=floattostr(ValorTotal);
+                  Closefile (vArquivo);
+            end;
+        end;
+    end;
+end;
+ end;
+
+procedure TForPrincipal.Image3Click(Sender: TObject);
+var Bi,xb :Integer;
+begin
+    If strGrid.Cells[1,1] = ''  then
+      begin showmessage('Não tem dados para serem Atualizados!'); abort;
+      end;
+        begin
+    if (MessageDlg('Deseja Gerar Esta Atualização?', MtConfirmation, [mbYes,mbNo] , 0)= MrYes) then
+       begin
+         for xb:=0 to strGrid.RowCount - 1 do
+              begin
+                if TableBoni.Locate( 'IDBONI', strGrid.Cells[1,xb], [loCaseInsensitive] ) then
+                  begin showmessage ('Arquivo já importado'+' : '+strGrid.Cells[1,xb]); abort;
+                  end;
+      begin
+        QBonigerar.Close;
+        QBonigerar.SQL.Clear;
+        QBonigerar.SQL.Add ('INSERT INTO GD_BONIFICACAO');
+        QBonigerar.SQL.Add ('(IDBONI)');
+        QBonigerar.SQL.Add ('VALUES');
+        QBonigerar.SQL.Add ('(:ID)');
+        QBonigerar.Parameters.ParamByName('ID').Value := strGrid.Cells[1,xb];
+        QBonigerar.ExecSQL;
+        Showmessage ('Atualização Realizada com Sucesso');
+      end
+end;
+end;
+end;
+end;
+
+
+
+procedure TForPrincipal.Image4Click(Sender: TObject);
+var
+  xls, wb, Range: OLEVariant;
+  arrData: Variant; RowCount, ColCount, i, j: Integer;
+begin {create variant array where we'll copy our data}
+    RowCount := strGrid.RowCount;
+    ColCount := strGrid.ColCount;
+    arrData := VarArrayCreate([1, RowCount, 1, ColCount], varVariant); {fill array}
+    for i := 1
+    to RowCount do
+    for j := 1
+    to ColCount do arrData[i, j] := strGrid.Cells[j-1, i-1]; {initialize an instance of Excel}
+    xls := CreateOLEObject('Excel.Application'); {create workbook}
+    wb := xls.Workbooks.Add; {retrieve a range where data must be placed}
+    Range := wb.WorkSheets[1].Range[wb.WorkSheets[1].Cells[1, 1], wb.WorkSheets[1].Cells[RowCount, ColCount]]; {copy data from allocated variant array}
+    Range.Value := arrData; {show Excel with our data}
+    xls.Visible := True;
+    end;
+
+procedure TForPrincipal.Image5Click(Sender: TObject);
+begin
+    if (Application.MessageBox('Deseja sair do Sistema?','Aviso',36)=6) then
+        begin
+            Application.Terminate;
+        end
+          else
+          begin
+               abort;
+          end;
+end;
+
+procedure TForPrincipal.Image6Click(Sender: TObject);
+begin
+    If EditIdmov.text = ''  then
+      begin showmessage('Por favor, digite algum valor no Identificador de Movimento'); abort;
+      end;
+        begin
+            If EditPeso.text = ''  then
+               begin showmessage('Por favor, digite algum valor no Peso'); abort;
+        end;
+begin
+    if (MessageDlg('Deseja Atualizar Movimento nº ' +EditIdmov.text +' Com Peso de ' +EditPeso.Text, MtConfirmation, [mbYes,mbNo] , 0)= MrYes) then
+      begin
+      //PESO LIQUIDO
+        QCarga.Close;
+        QCarga.SQL.Clear;
+        QCarga.SQL.Add ('UPDATE TMOV SET PESOLIQUIDO=:peso');
+        QCarga.SQL.Add ('WHERE IDMOV=:mov');
+        QCarga.Parameters.ParamByName ('peso').Value := EditPeso.Text;
+        QCarga.Parameters.ParamByName ('mov').Value := EditIdmov.Text;
+        QCarga.ExecSQL;
+     //PESO PRUTO
+        QCarga.SQL.Clear;
+        QCarga.SQL.Add ('UPDATE TMOV SET PESOBRUTO=:peso');
+        QCarga.SQL.Add ('WHERE IDMOV=:mov');
+        QCarga.Parameters.ParamByName ('peso').Value := EditPeso.Text;
+        QCarga.Parameters.ParamByName ('mov').Value := EditIdmov.Text;
+        QCarga.ExecSQL;
+     //CIDADES ESTADOS
+        QCarga.SQL.Clear;
+        QCarga.SQL.Add ('UPDATE TCTRC SET CODETDCOLETA=''GO'',CODMUNICIPIOCOLETA=17104,CODMUNICIPIOENTREGA=CODMUNICIPIO,CODETDENTREGA=UF');
+        QCarga.SQL.Add ('WHERE IDMOV=:mov');
+        QCarga.Parameters.ParamByName ('mov').Value := EditIdmov.Text;
+        QCarga.ExecSQL;
+        EditIdmov.Clear;
+        EditPeso.Clear;
+        EditIdmov.SetFocus;
+        Showmessage ('Atualização Realizada com Sucesso');
+      end
+    else
+        Showmessage ('Atualização Cancelada');
+end;
+end;
+end;
+
+procedure TForPrincipal.Sistema1Click(Sender: TObject);
+begin
+    FrmSobre.show
+end;
+
+procedure TForPrincipal.SpeedButton3Click(Sender: TObject);
+begin
+     Fastgerador.Clear;
+
+Fastgerador.LoadFromFile('Teste.fr3');
+
+Fastgerador.ShowReport;
+end;
+
+procedure TForPrincipal.Timer1Timer(Sender: TObject);
+begin
+    StatusBar1.Panels[0].Text := ' ' + FormatDateTime('hh:nn:ss',now); //
+    StatusBar1.Panels[1].Text := ' ' + FormatDateTime ('dddd", "dd" de "mmmm" de "yyyy',now); //
+end;
+
+
+procedure TForPrincipal.Verso1Click(Sender: TObject);
+begin
+      FrmVersao.Show;
+end;
+
+end.

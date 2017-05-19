@@ -1,0 +1,549 @@
+object frmControle: TfrmControle
+  Left = 0
+  Top = 0
+  Caption = 'Manuten'#231#227'o de Saldos'
+  ClientHeight = 229
+  ClientWidth = 428
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Panel1: TPanel
+    Left = 0
+    Top = 0
+    Width = 428
+    Height = 229
+    Align = alClient
+    TabOrder = 0
+    ExplicitTop = -85
+    ExplicitWidth = 559
+    ExplicitHeight = 384
+    object Label1: TLabel
+      Left = 18
+      Top = 21
+      Width = 82
+      Height = 13
+      Caption = 'C'#243'digo Vendedor'
+    end
+    object Label2: TLabel
+      Left = 110
+      Top = 21
+      Width = 76
+      Height = 13
+      Caption = 'Nome Vendedor'
+    end
+    object Label3: TLabel
+      Left = 19
+      Top = 77
+      Width = 26
+      Height = 13
+      Caption = 'Saldo'
+    end
+    object Label4: TLabel
+      Left = 146
+      Top = 126
+      Width = 68
+      Height = 13
+      Caption = 'Saldo Anterior'
+      Visible = False
+    end
+    object Label5: TLabel
+      Left = 147
+      Top = 82
+      Width = 51
+      Height = 13
+      Caption = 'Data Atual'
+    end
+    object Label6: TLabel
+      Left = 310
+      Top = 24
+      Width = 103
+      Height = 13
+      Caption = 'Data '#218'ltima altera'#231#227'o'
+    end
+    object Label7: TLabel
+      Left = 263
+      Top = 126
+      Width = 54
+      Height = 13
+      Caption = 'Novo Saldo'
+      Visible = False
+    end
+    object btEditar: TButton
+      Left = 87
+      Top = 167
+      Width = 58
+      Height = 21
+      Caption = 'Editar'
+      TabOrder = 0
+      OnClick = btEditarClick
+    end
+    object btSalvar: TButton
+      Left = 153
+      Top = 167
+      Width = 58
+      Height = 21
+      Caption = 'Salvar'
+      Enabled = False
+      TabOrder = 3
+      OnClick = btSalvarClick
+    end
+    object btExcluir: TButton
+      Left = 221
+      Top = 167
+      Width = 58
+      Height = 21
+      Caption = 'Excluir'
+      TabOrder = 4
+    end
+    object btLocalizar: TButton
+      Left = 79
+      Top = 140
+      Width = 50
+      Height = 21
+      Caption = 'Localizar'
+      TabOrder = 5
+      Visible = False
+      OnClick = btLocalizarClick
+    end
+    object btSair: TButton
+      Left = 355
+      Top = 167
+      Width = 58
+      Height = 21
+      Caption = 'Sair'
+      TabOrder = 6
+      OnClick = btSairClick
+    end
+    object btNovo: TButton
+      Left = 19
+      Top = 167
+      Width = 58
+      Height = 21
+      Caption = 'Novo'
+      TabOrder = 7
+      OnClick = btNovoClick
+    end
+    object DBEData: TDBEdit
+      Left = 145
+      Top = 101
+      Width = 121
+      Height = 21
+      Enabled = False
+      TabOrder = 8
+    end
+    object DBEdit2: TDBEdit
+      Left = 310
+      Top = 40
+      Width = 100
+      Height = 21
+      Align = alCustom
+      BiDiMode = bdLeftToRight
+      DataField = 'DATAVENDA'
+      DataSource = DSBonifica
+      Enabled = False
+      ParentBiDiMode = False
+      TabOrder = 9
+    end
+    object DBEdit3: TDBEdit
+      Left = 145
+      Top = 140
+      Width = 112
+      Height = 21
+      DataField = 'SALDOANTERIOR'
+      DataSource = DSBonifica
+      Enabled = False
+      TabOrder = 10
+      Visible = False
+    end
+    object DBESaldo: TDBEdit
+      Left = 19
+      Top = 101
+      Width = 110
+      Height = 21
+      DataField = 'SALDOPOSTERIOR'
+      DataSource = DSBonifica
+      Enabled = False
+      TabOrder = 11
+    end
+    object DBENovosaldo: TDBEdit
+      Left = 263
+      Top = 140
+      Width = 113
+      Height = 21
+      Enabled = False
+      TabOrder = 1
+      Visible = False
+    end
+    object RGVendas: TDBRadioGroup
+      Left = 310
+      Top = 77
+      Width = 103
+      Height = 56
+      Caption = 'Status'
+      Enabled = False
+      Items.Strings = (
+        'Inativo'
+        'Ativo')
+      TabOrder = 2
+    end
+    object EditCodVen: TMaskEdit
+      Left = 17
+      Top = 40
+      Width = 82
+      Height = 21
+      Alignment = taCenter
+      TabOrder = 12
+      Text = ''
+      OnChange = MaskEdit1Change
+      OnExit = EditCodVenExit
+    end
+    object DBENomeven: TDBEdit
+      Left = 110
+      Top = 40
+      Width = 186
+      Height = 21
+      DataField = 'NOME'
+      DataSource = DSRMVend
+      Enabled = False
+      TabOrder = 13
+    end
+    object btCancelar: TButton
+      Left = 288
+      Top = 167
+      Width = 58
+      Height = 21
+      Caption = 'Cancelar'
+      TabOrder = 14
+      OnClick = btCancelarClick
+    end
+  end
+  object QControle: TADOQuery
+    Connection = ForPrincipal.ADOConnection1
+    Parameters = <>
+    Left = 120
+    Top = 192
+  end
+  object DSControle: TDataSource
+    DataSet = QControle
+    Left = 120
+    Top = 224
+  end
+  object QRMvend: TADOQuery
+    Connection = ForPrincipal.ADOConnection1
+    CursorType = ctStatic
+    Parameters = <>
+    SQL.Strings = (
+      'SELECT * FROM TVEN')
+    Left = 64
+    Top = 192
+    object QRMvendCODCOLIGADA: TSmallintField
+      FieldName = 'CODCOLIGADA'
+    end
+    object QRMvendCODVEN: TStringField
+      FieldName = 'CODVEN'
+      Size = 16
+    end
+    object QRMvendNOME: TStringField
+      FieldName = 'NOME'
+      Size = 80
+    end
+    object QRMvendCARGO: TStringField
+      FieldName = 'CARGO'
+      Size = 30
+    end
+    object QRMvendCODFILIAL: TSmallintField
+      FieldName = 'CODFILIAL'
+    end
+    object QRMvendCODLOC: TStringField
+      FieldName = 'CODLOC'
+      Size = 15
+    end
+    object QRMvendCOMISSAO1: TBCDField
+      FieldName = 'COMISSAO1'
+      Precision = 15
+    end
+    object QRMvendCOMISSAO2: TBCDField
+      FieldName = 'COMISSAO2'
+      Precision = 15
+    end
+    object QRMvendCOMISSAO3: TBCDField
+      FieldName = 'COMISSAO3'
+      Precision = 15
+    end
+    object QRMvendCODPESSOA: TIntegerField
+      FieldName = 'CODPESSOA'
+    end
+    object QRMvendVENDECOMPRA: TSmallintField
+      FieldName = 'VENDECOMPRA'
+    end
+    object QRMvendCODUSUARIO: TStringField
+      FieldName = 'CODUSUARIO'
+    end
+    object QRMvendSENHA: TStringField
+      FieldName = 'SENHA'
+      Size = 80
+    end
+    object QRMvendINATIVO: TSmallintField
+      FieldName = 'INATIVO'
+    end
+    object QRMvendPFVENDEDOR: TSmallintField
+      FieldName = 'PFVENDEDOR'
+    end
+    object QRMvendPFCAIXA: TSmallintField
+      FieldName = 'PFCAIXA'
+    end
+    object QRMvendPFSUPERVISOR: TSmallintField
+      FieldName = 'PFSUPERVISOR'
+    end
+    object QRMvendPFGERENTE: TSmallintField
+      FieldName = 'PFGERENTE'
+    end
+    object QRMvendIDFUNCIONARIO: TIntegerField
+      FieldName = 'IDFUNCIONARIO'
+    end
+    object QRMvendCOMISSAO4: TBCDField
+      FieldName = 'COMISSAO4'
+      Precision = 15
+    end
+    object QRMvendDESCMAXIMO: TBCDField
+      FieldName = 'DESCMAXIMO'
+      Precision = 15
+    end
+    object QRMvendRECCREATEDBY: TStringField
+      FieldName = 'RECCREATEDBY'
+      Size = 50
+    end
+    object QRMvendRECCREATEDON: TDateTimeField
+      FieldName = 'RECCREATEDON'
+    end
+    object QRMvendRECMODIFIEDBY: TStringField
+      FieldName = 'RECMODIFIEDBY'
+      Size = 50
+    end
+    object QRMvendRECMODIFIEDON: TDateTimeField
+      FieldName = 'RECMODIFIEDON'
+    end
+  end
+  object DSRMVend: TDataSource
+    DataSet = QRMvend
+    Left = 64
+    Top = 224
+  end
+  object QBonifica: TADOQuery
+    Connection = ForPrincipal.ADOConnection1
+    CursorType = ctStatic
+    Parameters = <
+      item
+        Name = 'pCodVenBoni'
+        Value = Null
+      end>
+    SQL.Strings = (
+      'SELECT * FROM GD_BONIFICACAO')
+    Left = 18
+    Top = 193
+    object QBonificaIDBONI: TAutoIncField
+      FieldName = 'IDBONI'
+      ReadOnly = True
+    end
+    object QBonificaIDPRDB: TIntegerField
+      FieldName = 'IDPRDB'
+    end
+    object QBonificaDESCPRODUTO: TStringField
+      FieldName = 'DESCPRODUTO'
+      Size = 100
+    end
+    object QBonificaQUANTIDADEB: TIntegerField
+      FieldName = 'QUANTIDADEB'
+    end
+    object QBonificaCODUNDB: TStringField
+      FieldName = 'CODUNDB'
+      Size = 5
+    end
+    object QBonificaVALORITEM1: TBCDField
+      FieldName = 'VALORITEM1'
+      Precision = 4
+      Size = 2
+    end
+    object QBonificaVALORITEM2: TBCDField
+      FieldName = 'VALORITEM2'
+      Precision = 4
+      Size = 2
+    end
+    object QBonificaVALORITEM3: TBCDField
+      FieldName = 'VALORITEM3'
+      Precision = 4
+      Size = 2
+    end
+    object QBonificaVALORITEM4: TBCDField
+      FieldName = 'VALORITEM4'
+      Precision = 4
+      Size = 2
+    end
+    object QBonificaVALORITEM5: TBCDField
+      FieldName = 'VALORITEM5'
+      Precision = 4
+      Size = 2
+    end
+    object QBonificaVALORITEMVEND: TBCDField
+      FieldName = 'VALORITEMVEND'
+      Precision = 4
+      Size = 2
+    end
+    object QBonificaCODCPGB: TStringField
+      FieldName = 'CODCPGB'
+      Size = 5
+    end
+    object QBonificaHISTORICOB: TStringField
+      FieldName = 'HISTORICOB'
+      Size = 200
+    end
+    object QBonificaDATAVENDA: TStringField
+      FieldName = 'DATAVENDA'
+      Size = 30
+    end
+    object QBonificaCODCFOB: TStringField
+      FieldName = 'CODCFOB'
+      Size = 10
+    end
+    object QBonificaCODVEN1B: TStringField
+      FieldName = 'CODVEN1B'
+      Size = 16
+    end
+    object QBonificaVALORTOTAL: TStringField
+      FieldName = 'VALORTOTAL'
+      Size = 30
+    end
+    object QBonificaTIPOOPERACAO: TStringField
+      FieldName = 'TIPOOPERACAO'
+      Size = 16
+    end
+    object QBonificaSALDOANTERIOR: TStringField
+      FieldName = 'SALDOANTERIOR'
+      Size = 30
+    end
+    object QBonificaSALDOPOSTERIOR: TStringField
+      FieldName = 'SALDOPOSTERIOR'
+      Size = 30
+    end
+    object QBonificaNUMEROMOVB: TStringField
+      FieldName = 'NUMEROMOVB'
+      Size = 35
+    end
+    object QBonificaSTATUSB: TStringField
+      FieldName = 'STATUSB'
+      Size = 1
+    end
+    object QBonificaDATAEXTRA1B: TDateTimeField
+      FieldName = 'DATAEXTRA1B'
+    end
+    object QBonificaDATAEXTRA2B: TDateTimeField
+      FieldName = 'DATAEXTRA2B'
+    end
+    object QBonificaCOMISSAOREPRESB: TBCDField
+      FieldName = 'COMISSAOREPRESB'
+      Precision = 4
+      Size = 2
+    end
+    object QBonificaVALOROUTROSB: TBCDField
+      FieldName = 'VALOROUTROSB'
+      Precision = 4
+      Size = 2
+    end
+    object QBonificaVALORDESCB: TBCDField
+      FieldName = 'VALORDESCB'
+      Precision = 4
+      Size = 2
+    end
+    object QBonificaVALORDESPB: TBCDField
+      FieldName = 'VALORDESPB'
+      Precision = 4
+      Size = 2
+    end
+    object QBonificaVALOREXTRA2B: TBCDField
+      FieldName = 'VALOREXTRA2B'
+      Precision = 4
+      Size = 2
+    end
+    object QBonificaCODTB1FATB: TStringField
+      FieldName = 'CODTB1FATB'
+      Size = 10
+    end
+    object QBonificaCODTB2FATB: TStringField
+      FieldName = 'CODTB2FATB'
+      Size = 10
+    end
+    object QBonificaCODTB3FATB: TStringField
+      FieldName = 'CODTB3FATB'
+      Size = 10
+    end
+    object QBonificaCODTB4FATB: TStringField
+      FieldName = 'CODTB4FATB'
+      Size = 10
+    end
+    object QBonificaCODTB5FATB: TStringField
+      FieldName = 'CODTB5FATB'
+      Size = 10
+    end
+    object QBonificaCODTB1FLXB: TStringField
+      FieldName = 'CODTB1FLXB'
+      Size = 25
+    end
+    object QBonificaCODTB2FLXB: TStringField
+      FieldName = 'CODTB2FLXB'
+      Size = 25
+    end
+    object QBonificaCODTB3FLXB: TStringField
+      FieldName = 'CODTB3FLXB'
+      Size = 25
+    end
+    object QBonificaCODTB4FLXB: TStringField
+      FieldName = 'CODTB4FLXB'
+      Size = 25
+    end
+    object QBonificaCODTB5FLXB: TStringField
+      FieldName = 'CODTB5FLXB'
+      Size = 25
+    end
+    object QBonificaDATABASEMOVB: TDateTimeField
+      FieldName = 'DATABASEMOVB'
+    end
+    object QBonificaDATAMOVIMENTOB: TDateTimeField
+      FieldName = 'DATAMOVIMENTOB'
+    end
+    object QBonificaCODUSUARIOB: TStringField
+      FieldName = 'CODUSUARIOB'
+    end
+    object QBonificaCAMPOLIVRE1B: TStringField
+      FieldName = 'CAMPOLIVRE1B'
+      Size = 100
+    end
+    object QBonificaCAMPOLIVRE2B: TStringField
+      FieldName = 'CAMPOLIVRE2B'
+      Size = 100
+    end
+    object QBonificaCAMPOLIVRE3B: TStringField
+      FieldName = 'CAMPOLIVRE3B'
+      Size = 100
+    end
+    object QBonificaNUMEROEXTRA1: TIntegerField
+      FieldName = 'NUMEROEXTRA1'
+    end
+    object QBonificaNUMEROEXTRA2: TIntegerField
+      FieldName = 'NUMEROEXTRA2'
+    end
+    object QBonificaDATACRIACAOB: TDateTimeField
+      FieldName = 'DATACRIACAOB'
+    end
+  end
+  object DSBonifica: TDataSource
+    DataSet = QBonifica
+    Left = 18
+    Top = 224
+  end
+end

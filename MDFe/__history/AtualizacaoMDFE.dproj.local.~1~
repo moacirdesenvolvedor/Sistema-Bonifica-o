@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2016/06/09 15:08:25.000.932,=C:\Users\julio\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2016/06/10 15:30:28.000.943,C:\Users\julio\Documents\Embarcadero\Studio\Projects\Unit1.pas=D:\programas Delphi\MDFe\Unit1.pas</Transaction>
+    <Transaction>2016/06/10 15:30:28.000.948,C:\Users\julio\Documents\Embarcadero\Studio\Projects\Unit1.dfm=D:\programas Delphi\MDFe\Unit1.dfm</Transaction>
+    <Transaction>2016/06/10 15:30:40.000.043,C:\Users\julio\Documents\Embarcadero\Studio\Projects\Project1.dproj=D:\programas Delphi\MDFe\Project1.dproj</Transaction>
+    <Transaction>2016/06/13 09:21:13.000.590,D:\programas Delphi\MDFe\AtualizacaoMDFE.dproj=D:\programas Delphi\MDFe\Project1.dproj</Transaction>
+    <Transaction>2016/06/13 09:26:11.000.533,D:\programas Delphi\MDFe\AtualizacaoMDFE.dproj=D:\programas Delphi\MDFe\AtualizacaoMDFE.dproj</Transaction>
+    <Transaction>2016/06/13 09:52:04.000.258,D:\programas Delphi\MDFe\AtualizacaoMDFE.dproj=D:\programas Delphi\MDFe\AtualizacaoMDFE.dproj</Transaction>
+    <Transaction>2016/06/13 10:19:59.000.739,D:\programas Delphi\MDFe\AtualizacaoMDFE.dproj=D:\programas Delphi\MDFe\AtualizacaoMDFE.dproj</Transaction>
+    <Transaction>2016/06/13 13:27:30.000.476,D:\programas Delphi\MDFe\AtualizacaoMDFE.dproj=D:\programas Delphi\MDFe\AtualizacaoMDFE.dproj</Transaction>
+    <Transaction>2016/06/13 13:28:02.000.598,D:\programas Delphi\MDFe\AtualizacaoMDFE.dproj=D:\programas Delphi\MDFe\AtualizacaoMDFE.dproj</Transaction>
+    <Transaction>2016/06/14 17:48:42.000.481,D:\programas Delphi\MDFe\AtualizacaoMDFE.dproj=D:\programas Delphi\MDFe\AtualizacaoMDFE.dproj</Transaction>
+    <Transaction>2016/06/15 10:31:59.000.641,D:\programas Delphi\MDFe\AtualizacaoMDFE.dproj=D:\programas Delphi\MDFe\AtualizacaoMDFE.dproj</Transaction>
+    <Transaction>2016/06/15 10:37:21.000.763,D:\programas Delphi\MDFe\AtualizacaoMDFE.dproj=D:\programas Delphi\MDFe\AtualizacaoMDFE.dproj</Transaction>
+    <Transaction>2016/06/16 08:56:19.000.050,D:\programas Delphi\MDFe\AtualizacaoMDFE.dproj=D:\programas Delphi\MDFe\AtualizacaoMDFE.dproj</Transaction>
+    <Transaction>2016/06/16 17:39:26.000.461,D:\programas Delphi\MDFe\AtualizacaoMDFE.dproj=D:\programas Delphi\MDFe\AtualizacaoMDFE.dproj</Transaction>
+    <Transaction>2017/03/13 13:26:26.000.917,=D:\temp\Sistema Atualização MDFe\MDFe\Unit2.pas</Transaction>
+    <Transaction>2017/03/23 15:19:38.000.486,=D:\temp\Sistema Atualização MDFe\MDFe\Unit3.pas</Transaction>
+    <Transaction>2017/03/23 15:36:57.000.444,D:\temp\Sistema Atualização MDFe\MDFe\Unit3.pas=D:\temp\Sistema Atualização MDFe\MDFe\UnSobre.pas</Transaction>
+    <Transaction>2017/03/23 15:36:57.000.444,D:\temp\Sistema Atualização MDFe\MDFe\Unit3.dfm=D:\temp\Sistema Atualização MDFe\MDFe\UnSobre.dfm</Transaction>
+    <Transaction>2017/03/23 16:41:07.000.730,=D:\temp\Sistema Atualização MDFe\MDFe\Unit3.pas</Transaction>
+    <Transaction>2017/03/23 16:42:34.000.253,D:\temp\Sistema Atualização MDFe\MDFe\Unit3.dfm=D:\temp\Sistema Atualização MDFe\MDFe\UnVersao.dfm</Transaction>
+    <Transaction>2017/03/23 16:42:34.000.253,D:\temp\Sistema Atualização MDFe\MDFe\Unit3.pas=D:\temp\Sistema Atualização MDFe\MDFe\UnVersao.pas</Transaction>
+    <Transaction>2017/03/24 12:07:31.143,D:\temp\Sistema Atualização MDFe\MDFe\UnPrincipal.pas=D:\temp\Sistema Atualização MDFe\MDFe\Unit1.pas</Transaction>
+    <Transaction>2017/03/24 12:07:31.158,D:\temp\Sistema Atualização MDFe\MDFe\UnPrincipal.dfm=D:\temp\Sistema Atualização MDFe\MDFe\Unit1.dfm</Transaction>
+    <Transaction>2017/03/24 12:09:10.552,D:\temp\Sistema Atualização MDFe\MDFe\RelBoniVend.pas=D:\temp\Sistema Atualização MDFe\MDFe\Unit2.pas</Transaction>
+    <Transaction>2017/03/24 12:09:10.552,D:\temp\Sistema Atualização MDFe\MDFe\RelBoniVend.dfm=D:\temp\Sistema Atualização MDFe\MDFe\Unit2.dfm</Transaction>
+  </Transactions>
+</BorlandProject>

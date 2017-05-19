@@ -1,0 +1,119 @@
+object FrmSobre: TFrmSobre
+  Left = 0
+  Top = 0
+  BorderIcons = []
+  ClientHeight = 291
+  ClientWidth = 595
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Panel1: TPanel
+    Left = 0
+    Top = -6
+    Width = 633
+    Height = 297
+    TabOrder = 0
+    object Label1: TLabel
+      Left = 16
+      Top = 13
+      Width = 47
+      Height = 19
+      Caption = 'Sobre'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clMaroon
+      Font.Height = -16
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object Label2: TLabel
+      Left = 16
+      Top = 62
+      Width = 356
+      Height = 13
+      Caption = 
+        'Este programa foi desenvolvido e customizado para ser usado na e' +
+        'mpresa'
+    end
+    object Label3: TLabel
+      Left = 16
+      Top = 83
+      Width = 303
+      Height = 13
+      Caption = 'Gr'#227'o Dourado Ind. Com. LTDA, com sede em Piracanjuba - GO.'
+    end
+    object Label4: TLabel
+      Left = 16
+      Top = 104
+      Width = 346
+      Height = 13
+      Caption = 
+        'Seu uso e restrito a esta empresa e  tamb'#233'm protegido pela Lei 9' +
+        '609/98'
+    end
+    object Label5: TLabel
+      Left = 16
+      Top = 128
+      Width = 341
+      Height = 13
+      Caption = 
+        'e 9610/98 respectivamente Lei do Software e Lei dos Direitos Aut' +
+        'orais.'
+    end
+    object Label6: TLabel
+      Left = 16
+      Top = 149
+      Width = 344
+      Height = 13
+      Caption = 
+        'Nenhuma parte deste programa pode ser reproduzida ou transmitida' +
+        ' de'
+    end
+    object Label7: TLabel
+      Left = 16
+      Top = 169
+      Width = 346
+      Height = 13
+      Caption = 
+        'nenhuma forma e por nenhum meio, eletr'#244'nico ou mec'#226'nico, por mot' +
+        'ivo '
+    end
+    object Label8: TLabel
+      Left = 16
+      Top = 188
+      Width = 210
+      Height = 13
+      Caption = 'algum, sem a permiss'#227'o escrita da X DATA .'
+    end
+    object Image1: TImage
+      Left = 448
+      Top = 62
+      Width = 118
+      Height = 120
+      Stretch = True
+    end
+    object Panel2: TPanel
+      Left = 482
+      Top = 256
+      Width = 84
+      Height = 25
+      Caption = 'Fechar'
+      Color = clActiveCaption
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWhite
+      Font.Height = -16
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentBackground = False
+      ParentFont = False
+      TabOrder = 0
+      OnClick = Panel2Click
+    end
+  end
+end
